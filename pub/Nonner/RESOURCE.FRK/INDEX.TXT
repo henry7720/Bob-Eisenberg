@@ -1,0 +1,7 @@
+total 10
+-rw-rw-r--   1 ftpadmin nobody       321 Jun 19  1998 DESKTOP
+-rw-r--r--   1 ftpadmin other          0 Jun  6 16:56 INDEX.TXT
+-rw-rw-r--   1 ftpadmin nobody       410 Jun 19  1998 PNP0.C
+-rw-rw-r--   1 ftpadmin nobody       410 Jun 19  1998 PNP1.C
+-rw-rw-r--   1 ftpadmin nobody       410 Jun 19  1998 PNP2.C
+-rw-rw-r--   1 ftpadmin nobody       410 Jun 19  1998 TESTPNP.C

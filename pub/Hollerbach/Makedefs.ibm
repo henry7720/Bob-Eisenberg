@@ -1,0 +1,9 @@
+SHELL = /bin/sh
+
+CC = xlc -bmaxdata:0x80000000
+CFDEF = -O
+F77 = f77 -bmaxdata:0x80000000
+FFLAGS = -O -u
+AR = ar rcs
+RANLIB = /bin/true
+ARCH = IBM

@@ -1,0 +1,9 @@
+SHELL = /bin/sh
+
+CC = c89
+CFDEF = -O
+F77 = fort77
+FFLAGS = -O -u
+AR = ar rcs
+RANLIB = /bin/true
+ARCH = HP

@@ -1,0 +1,10 @@
+PNP is available on-line at
+
+http://www.pnponline.org/
+
+It is a user friendly version of Uwe Hollerbach's one dimensional PNP program
+and was kindly written by Brice Burgess.
+
+Please let us (Bob Eisenberg: beisenbe@rush.edu  Brice Burgess:  nesta@iceburg.net)
+of any criticisms or suggestions you would like to make.
+

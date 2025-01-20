@@ -1,0 +1,15 @@
+21		# choose cylindrical geometry with user-defined parameters
+4.0		# pore radius
+30.0		# pore length
+96.1e-3		# left ion concentration
+641.0e-3	# right ion concentration
+2.892363e-07	# diffusion coefficient of positive ions in pore
+1.795128e-06	# diffusion coefficient of negative ions in pore
+26.85		# ambient temperature
+80.0		# relative dielectric coefficient of pore
++1.0		# fixed charge density at left end of pore
+-6.0		# fixed charge density at right end of pore
+-0.2		# initial transmembrane voltage
++0.2		# final transmembrane voltage
+0.01		# transmembrane voltage step
+0		# done with run, quit

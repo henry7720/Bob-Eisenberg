@@ -1,0 +1,42 @@
+Examine the files
+
+    Makedefs.alpha
+    Makedefs.generic
+    Makedefs.hp
+    Makedefs.ibm
+    Makedefs.iris
+    Makedefs.linux
+    Makedefs.solaris
+    Makedefs.sun
+
+and see which one fits your system best; these are samples, and may
+not fit any given system exactly. Make any necessary modifications,
+then type
+
+    make 'system'
+
+where 'system' is whichver one you chose of
+
+    'alpha', 'generic', 'hp', 'ibm', 'iris', 'linux', 'solaris', or 'sun'
+
+This sets up a symbolic link to the appropriate Makedefs, and
+only needs to be done once (per system). Next type
+
+    make clean pnp_funnel
+
+Expect to (possibly) see a warning about the variable 'smp' being used
+before it is defined; this is normal.  After that, you should be able
+to run pnp_funnel. Two commented sample input files, 'test1.input' and
+'test2.input', are provided; you can try running them with the following
+commands:
+
+	pnp_funnel < test1.input > your1.output
+	pnp_funnel < test2.input > your2.output
+
+Then compare the files 'your1.output' against 'test1.output', and
+'your2.output' against 'test2.output'. The data should be exceedingly
+similar. For comparison, the file 'comp1.output' contains the output
+of another PNP program which solved for exactly the same physical
+situation as specified in 'test1.input'. The first run takes about 6
+seconds of CPU time on a Pentium-133, and the second about 33 seconds
+on the same machine.

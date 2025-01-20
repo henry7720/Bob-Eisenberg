@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>403 Forbidden</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" type="text/css">
+<style>
+body {
+  color: #0000A0;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body>
+<h1>403 Forbidden</h1>
+<p>You are forbidden from accessing <!--#echo var="REQUEST_URI"-->.</p>
+</body>
+</html>

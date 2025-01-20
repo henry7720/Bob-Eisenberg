@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>500 Internal Server Error</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" type="text/css">
+<style>
+body {
+  color: #0000A0;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body>
+<h1>500 Internal Server Error</h1>
+<p>500 Internal Server Error, please contact the Webmaster.</p>
+</body>
+</html>

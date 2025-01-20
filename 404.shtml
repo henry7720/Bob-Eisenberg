@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>404 Not Found</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i" type="text/css">
+<style>
+body {
+  color: #0000A0;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+</style>
+</head>
+<body>
+<h1>404 Not Found</h1>
+<p>The requested URL <!--#echo var="REQUEST_URI"--> was not found on this server.</p>
+</body>
+</html>

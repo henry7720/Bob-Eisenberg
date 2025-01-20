@@ -1,0 +1,9 @@
+SHELL = /bin/sh
+
+CC = gcc
+CFDEF = -O2 -ansi -pedantic -Wall -Wstrict-prototypes
+F77 = /usr/lang/f77
+FFLAGS = -O -u -Bstatic
+AR = ar rc
+RANLIB = ranlib
+ARCH = SUN

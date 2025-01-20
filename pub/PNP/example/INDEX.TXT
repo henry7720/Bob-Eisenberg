@@ -1,0 +1,7 @@
+total 86
+-rw-r--r--   1 ftpadmin other          0 Jun  6 16:56 INDEX.TXT
+-rw-rw-r--   1 ftpadmin nobody     15500 Feb 28  1996 file.pc
+-rw-rw-r--   1 ftpadmin nobody      1407 Feb 28  1996 i.v
+-rw-rw-r--   1 ftpadmin nobody       475 Feb 28  1996 in
+-rw-rw-r--   1 ftpadmin nobody      2316 Feb 28  1996 out
+-rw-rw-r--   1 ftpadmin nobody     21144 Feb 28  1996 pnp.f

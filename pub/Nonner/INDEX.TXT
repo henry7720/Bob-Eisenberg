@@ -1,0 +1,10 @@
+total 76
+-rw-rw-r--   1 ftpadmin nobody         0 Jun 19  1998 DESKTOP
+-rw-rw-r--   1 ftpadmin nobody       788 Jun 19  1998 FINDER.DAT
+-rw-r--r--   1 ftpadmin other          0 Jun  6 16:56 INDEX.TXT
+-rw-rw-r--   1 ftpadmin nobody      4588 Jun 19  1998 PNP0.C
+-rw-rw-r--   1 ftpadmin nobody     15450 Jun 19  1998 PNP1.C
+-rw-rw-r--   1 ftpadmin nobody      9294 Jun 19  1998 PNP2.C
+drwxrwxr-x   2 ftpadmin nobody       512 Jun 19  1998 RESOURCE.FRK
+-rw-rw-r--   1 ftpadmin nobody       984 Aug 18  1998 ReadMeForANSI_C_code.txt
+-rw-rw-r--   1 ftpadmin nobody      3330 Jun 19  1998 TESTPNP.C

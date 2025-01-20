@@ -1,0 +1,24 @@
+total 148
+-rw-rw-r--   1 ftpadmin nobody      1405 Aug 12  1998 0README
+-rw-rw-r--   1 ftpadmin nobody       967 Aug 18  1998 About _This_Code.txt
+-rw-rw-r--   1 ftpadmin nobody       181 Aug 12  1998 About___this_program
+-rw-r--r--   1 ftpadmin other          0 Jun  6 16:56 INDEX.TXT
+-rw-rw-r--   1 ftpadmin nobody       100 Aug 12  1998 Makedefs
+-rw-rw-r--   1 ftpadmin nobody       132 Aug 12  1998 Makedefs.alpha
+-rw-rw-r--   1 ftpadmin nobody       100 Aug 12  1998 Makedefs.generic
+-rw-rw-r--   1 ftpadmin nobody       106 Aug 12  1998 Makedefs.hp
+-rw-rw-r--   1 ftpadmin nobody       146 Aug 12  1998 Makedefs.ibm
+-rw-rw-r--   1 ftpadmin nobody       129 Aug 12  1998 Makedefs.iris
+-rw-rw-r--   1 ftpadmin nobody       149 Aug 12  1998 Makedefs.linux
+-rw-rw-r--   1 ftpadmin nobody       118 Aug 12  1998 Makedefs.solaris
+-rw-rw-r--   1 ftpadmin nobody       162 Aug 12  1998 Makedefs.sun
+-rw-rw-r--   1 ftpadmin nobody       675 Aug 12  1998 Makefile
+-rw-rw-r--   1 ftpadmin nobody      5020 Aug 12  1998 comp1.output
+-rw-rw-r--   1 ftpadmin nobody      3853 Aug 12  1998 pnp_funnel.h
+-rw-rw-r--   1 ftpadmin nobody     16455 Aug 12  1998 pnp_funnel_1.c
+-rw-rw-r--   1 ftpadmin nobody      9298 Aug 12  1998 pnp_funnel_2.c
+-rw-rw-r--   1 ftpadmin nobody     15784 Aug 12  1998 pnp_funnel_main.c
+-rw-rw-r--   1 ftpadmin nobody       605 Aug 12  1998 test1.input
+-rw-rw-r--   1 ftpadmin nobody      2624 Aug 12  1998 test1.output
+-rw-rw-r--   1 ftpadmin nobody       591 Aug 12  1998 test2.input
+-rw-rw-r--   1 ftpadmin nobody      2624 Aug 12  1998 test2.output

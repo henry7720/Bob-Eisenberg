@@ -1,0 +1,9 @@
+SHELL = /bin/sh
+
+CC = cc
+CFDEF = -O
+F77 = f77
+FFLAGS = -O
+AR = ar rc
+RANLIB = ranlib
+ARCH = GENERIC

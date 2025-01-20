@@ -1,0 +1,9 @@
+SHELL = /bin/sh
+
+CC = cc -std1 -migrate
+CFDEF = -O -fast
+F77 = f77
+FFLAGS = -O -u -fast
+AR = ar rcs
+RANLIB = /bin/true
+ARCH = ALPHA

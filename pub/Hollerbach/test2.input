@@ -1,0 +1,17 @@
+31
+3.0	# pore radius
+10.0	# pore length
+20.0	# atrium length
+0.1	# left concentration of ions
+0.5	# right concentration of ions
+2.0e-5	# bath diffusion coefficient of positive ion
+2.0e-5	# bath diffusion coefficient of negative ion
+3.0e-7	# pore diffusion coefficient of positive ion
+2.0e-6	# pore diffusion coefficient of negative ion
+26.85	# ambient temperature
++1.0	# fixed charge density at left end of pore
+-5.0	# fixed charge density at right end of pore
+-0.2	# initial transmembrane voltage
++0.2	# final transmembrane voltage
+0.01	# transmembrane voltage step
+0	# done with run, quit

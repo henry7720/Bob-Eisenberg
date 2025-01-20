@@ -1,0 +1,9 @@
+SHELL = /bin/sh
+
+CC = cc
+CFDEF = -O2
+F77 = f77
+FFLAGS = -O2 -u -extend_source -static
+AR = ar rcs
+RANLIB = /bin/true
+ARCH = IRIS

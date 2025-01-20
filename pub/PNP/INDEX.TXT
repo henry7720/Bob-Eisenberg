@@ -1,0 +1,6 @@
+total 70
+-rw-r--r--   1 ftpadmin other          0 Jun  6 16:56 INDEX.TXT
+-rw-r--r--   1 ftpadmin nobody        89 Mar  1  1996 a.This_is_the_pub-Eisenberg-PNP_directory
+drwxr-xr-x   2 ftpadmin nobody       512 Feb 28  1996 example
+-rw-rw-r--   1 ftpadmin nobody     11869 Feb 28  1996 example.tar.gz
+-rw-rw-r--   1 ftpadmin nobody     21144 Feb 28  1996 pnp.f

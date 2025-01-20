@@ -1,0 +1,9 @@
+SHELL = /bin/sh
+
+CC = gcc
+CFDEF = -O2 -ansi -pedantic -Wall -Wstrict-prototypes
+F77 = g77
+FFLAGS = -O -u
+AR = ar rcs
+RANLIB = /bin/true
+ARCH = LINUX

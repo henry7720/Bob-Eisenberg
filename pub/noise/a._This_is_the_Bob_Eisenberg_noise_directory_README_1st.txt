@@ -1,0 +1,65 @@
+THIS IS A LIST OF THE FILES IN THIS DIRECTORY
+(ftp://ftp.rush.edu/users/molebio/Bob_Eisenberg/noise/)
+
+
+1. chnl2.txt    This file contains 100,000 points.  It contains the channel
+data without noise AND WITHOUT ANY FILTERING.  There are 812 openings.  The
+open channel current amplitude is 1.0.
+
+
+2. chnl2+noise.txt    This file contains 100,000 points.  IT SHOULD NOT BE
+ANALYZED (see below).      It contains the channels
+in chnl2 with noise added BUT WITHOUT ANY FILTERING.  The rms
+value of the noise is about 3.18.  The open channel current amplitude is
+1.0.  Note that the power spectral density (PSD) of the noise has a shape
+that is appropriate for more or less best-case recording situations,
+provided that it is assumed that the sampling rate is 100 kHz (10
+microseconds per point).  ALSO NOTE THAT THIS FILE COULD NOT BE OBTAINED
+PHYSICALLY WITHOUT SEVERE ALIASING PROBLEMS.  This is due to the sampling
+rate of this data (100 kHz) and the fact that the amplifier has a bandwidth
+that extends significantly beyond 50 kHz.  THIS FILE SHOULD NOT BE
+ANALYZED.  The noise contains white, f, and f**2 components.  f noise has a
+PSD (amp**2/Hz) that rises linearly with increasing frequency; f**2 noise
+has a PSD that rises as f**2.
+
+
+3. fchnl2+noise.txt    This is chnl2+noise that has been passed through a
+digital (FIR) Gaussian filter to simulate an anti-aliasing filter.
+Assuming that the sampling rate is 100 kHz, the -3 dB bandwidth of this
+filter is 15 kHz.  This is an appropriate filter setting for this type of
+filter (which closely approximates the 8 pole Bessel filters usually used)
+and this sampling rate.  The rms value of the noise in this file is 0.86.
+The signal-to-noise ratio (SNR) is 1.16 (SNR is defined as open channel
+current amplitude divided by rms noise).  THIS IS THE FILE THAT SHOULD BE
+ANALYZED.  It contains 812 openings, with a mean open time of 422
+microseconds (42.2 points) and a mean closed time of 808 microseconds (80.8
+points).  Of course these values also apply to chnl2 and chnl2+noise.
+
+
+4. noise.txt    This file contains the noise that was added to create
+chnl2+noise.  It contains 100,000 points (like all of the files) and has
+NOT been filtered.
+
+
+5. fnoise.txt    This file contains the same noise passed through a digital
+Gaussian filter with a -3 dB bandwidth of 15 kHz.  Thus it is the noise
+found in fchnl2+noise.
+
+
+6. threshold.txt    See explanation below.
+
+
+Note that half amplitude threshold detection of this data can be
+accomplished by filtering the data to achieve a final bandwidth of 3 kHz
+(reducing rms noise to 0.127 and increasing SNR to 7.87).
+
+After this filtering, half amplitude threshold detection found 672 openings, with
+not more than 1 false alarm.  By allowing a few more false alarms, several more  
+true openings can be detected.  The detected mean open time was 506 microseconds
+and the detected mean closed time was 980 microseconds.  As expected both
+of these are over-estimates due to missing brief events.  Corrections of
+the means (taking into account the filter and assuming exponentially
+distributed channel lifetimes) is possible but has not been done for this
+data.
+   
+The file "threshold" contains the output of this detection algorithm.

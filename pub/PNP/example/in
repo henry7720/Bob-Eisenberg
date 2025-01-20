@@ -1,0 +1,8 @@
+1 4.D0 30.D0 2.D0  80.D0              MODPSE, RADIUS, WIDTH , EM , EA 
+2.892363E-07    1.795128E-06          ( DION(I), I = 1 , NION)
+96.1D-3  96.1D-3                      ( CL(I)  , I = 1 , NION) 
+641.0D-3  641.0D-3                    ( CR(I)  , I = 1 , NION) 
+-100.d-3  100.d-3    10.D-3          VOLT1, VOLT2, VSTEP
+1.D-10  20000                         TOL, MAXITER
+498   'file.pc'                      N, PCFILE 
+'i.v'  'p.x'   'c.x'                  IVFILE PFILE CFILE

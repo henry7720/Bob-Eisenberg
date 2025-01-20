@@ -1,0 +1,38 @@
+body {
+  margin: 0px 90px 0px 90px;
+  color: #000;
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
+}
+
+p {
+  line-height: 1.8;
+  text-indent: 40px;
+  font-size: 14pt;
+}
+
+ul, ol {
+  font-size: 14pt;
+}
+
+.center, h1, h2 {
+  text-align: center;
+}
+
+.noindent {
+  text-indent: 0px;
+}
+
+@media screen and (max-width: 600px){
+  body {
+	margin: 0px 15px 0px 15px;
+  }
+  
+  p {
+	text-align: justify;
+    text-indent: 0px;
+  }
+  
+  ul, ol {
+	text-align: left;
+  }
+}

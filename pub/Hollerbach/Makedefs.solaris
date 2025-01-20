@@ -1,0 +1,9 @@
+SHELL = /bin/sh
+
+CC = /opt/SUNWspro/bin/cc
+CFDEF = -O
+F77 = g77
+FFLAGS = -O
+AR = ar rc
+RANLIB = ranlib
+ARCH = SOLARIS
