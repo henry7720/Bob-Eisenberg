@@ -59,4 +59,4 @@ def update_cv_links(docx_path, output_path):
     print(f"✔ Successfully compiled document: '{output_path}'")
 
 # Execute conversion using your exact filename parameters
-update_cv_links("../newest-CV/__CV_January_13_2025_(JT).docx", "../newest-CV/Updated___CV_January_13_2025_(JT).docx")
+update_cv_links("../newest-CV/Bob_Eisenberg_CV_2026-02-19-2.docx", "../newest-CV/Bob_Eisenberg_CV_2026-02-19.docx")
