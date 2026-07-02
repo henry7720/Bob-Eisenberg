@@ -1,60 +1,97 @@
 import re
 from docx import Document
-from docx.oxml.ns import qn
+
+NEW_BASE_URL = "https://bob-eisenberg.com/Reprints/"
+
+REPRINT_PATTERN = re.compile(
+    r'(?:https?://|ftp://)?'
+    r'(?:ftp\.rush\.edu)?'
+    r'/?users/molebio/Bob_Eisenberg/Reprints/'
+    r'([^\s)\]]+)',
+    re.IGNORECASE,
+)
+
+
+def replacement(match):
+    """Return the new URL preserving only the filename/path fragment."""
+    return NEW_BASE_URL + match.group(1)
+
+
+def update_text_in_paragraphs(paragraphs):
+    """Update visible URLs in a collection of paragraphs."""
+    updates = 0
+
+    for paragraph in paragraphs:
+        for node in paragraph._element.iter():
+            if node.tag.endswith("t") and node.text:
+                new_text, count = REPRINT_PATTERN.subn(replacement, node.text)
+                if count:
+                    node.text = new_text
+                    updates += count
+
+    return updates
+
+
+def update_tables(tables):
+    """Recursively update all tables."""
+    updates = 0
+
+    for table in tables:
+        for row in table.rows:
+            for cell in row.cells:
+                updates += update_text_in_paragraphs(cell.paragraphs)
+
+                # Handle nested tables
+                updates += update_tables(cell.tables)
+
+    return updates
+
 
 def update_cv_links(docx_path, output_path):
     doc = Document(docx_path)
-    
-    # FIX: Changed (.*) to ([^\s)\]]+)
-    # This forces the capture group to match the filename but STOP if it hits:
-    # a space (\s), a closing parenthesis (\)), or a closing bracket (\])
-    reprint_pattern = re.compile(
-        r'((?:https?:\/\/|ftp:\/\/)?(?:ftp\.rush\.edu)?\/users\/molebio\/Bob_Eisenberg\/Reprints\/)([^\s)\]]+)', 
-        re.IGNORECASE
-    )
-    
-    new_base_url = "https://bob-eisenberg.com/Reprints/"
+
     hyperlink_updates = 0
     text_updates = 0
 
-    # --- Step 1: Update Underlying Hyperlink Destinations (.rels) ---
-    rels = doc.part.rels
-    for rel_id, rel in rels.items():
-        if "hyperlink" in rel.reltype:
-            match = reprint_pattern.search(rel.target_ref)
+    # ------------------------------------------------------------------
+    # Update hyperlink destinations (.rels)
+    # ------------------------------------------------------------------
+    for rel in doc.part.rels.values():
+        if rel.reltype.endswith("/hyperlink"):
+            match = REPRINT_PATTERN.search(rel.target_ref)
             if match:
-                # group(2) is now our safe filename fragment
-                file_fragment = match.group(2)
-                rel._target = f"{new_base_url}{file_fragment}"
+                rel._target = replacement(match)
                 hyperlink_updates += 1
 
-    # --- Step 2: Update Raw Text and Visible Link Labels ---
-    for paragraph in doc.paragraphs:
-        for child in paragraph._element.iter():
-            if child.tag.endswith('t') and child.text:
-                # We use re.sub here to cleanly replace ONLY the matched URL string
-                # leaving everything else in the text run (like ' [PDF]') completely untouched
-                new_text, count = reprint_pattern.subn(rf"{new_base_url}\2", child.text)
-                if count > 0:
-                    child.text = new_text
-                    text_updates += count
+    # ------------------------------------------------------------------
+    # Main document
+    # ------------------------------------------------------------------
+    text_updates += update_text_in_paragraphs(doc.paragraphs)
+    text_updates += update_tables(doc.tables)
 
-    # --- Step 3: Check inside Tables ---
-    for table in doc.tables:
-        for row in table.rows:
-            for cell in row.cells:
-                for paragraph in cell.paragraphs:
-                    for child in paragraph._element.iter():
-                        if child.tag.endswith('t') and child.text:
-                            new_text, count = reprint_pattern.subn(rf"{new_base_url}\2", child.text)
-                            if count > 0:
-                                child.text = new_text
-                                text_updates += count
+    # ------------------------------------------------------------------
+    # Headers and footers
+    # ------------------------------------------------------------------
+    for section in doc.sections:
+        header = section.header
+        footer = section.footer
+
+        text_updates += update_text_in_paragraphs(header.paragraphs)
+        text_updates += update_tables(header.tables)
+
+        text_updates += update_text_in_paragraphs(footer.paragraphs)
+        text_updates += update_tables(footer.tables)
 
     doc.save(output_path)
-    print("--- Link Refactoring Metrics ---")
-    print(f"✔ Modified Hyperlinks (Targets): {hyperlink_updates}")
-    print(f"✔ Modified Plain Text References: {text_updates}")
-    print(f"✔ Successfully compiled document: '{output_path}'")
 
-update_cv_links("../newest-CV/Bob_Eisenberg_CV_2026-02-19-2.docx", "../newest-CV/Bob_Eisenberg_CV_2026-02-19.docx")
+    print("\n--- Link Refactoring Metrics ---")
+    print(f"✔ Modified hyperlink targets : {hyperlink_updates}")
+    print(f"✔ Modified visible URLs      : {text_updates}")
+    print(f"✔ Saved updated document to: {output_path}")
+
+
+if __name__ == "__main__":
+    update_cv_links(
+        "../newest-CV/Bob_Eisenberg_CV_2026-02-19-2.docx",
+        "../newest-CV/Bob_Eisenberg_CV_2026-02-19-3.docx",
+    )
