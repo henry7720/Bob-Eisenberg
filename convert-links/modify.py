@@ -3,12 +3,13 @@ from docx import Document
 from docx.oxml.ns import qn
 
 def update_cv_links(docx_path, output_path):
-    # Load the Word document
     doc = Document(docx_path)
     
-    # Updated regex to explicitly catch the '/users/' path segment and match both http/https/ftp protocols
+    # FIX: Changed (.*) to ([^\s)\]]+)
+    # This forces the capture group to match the filename but STOP if it hits:
+    # a space (\s), a closing parenthesis (\)), or a closing bracket (\])
     reprint_pattern = re.compile(
-        r'(?:https?:\/\/|ftp:\/\/)?(?:ftp\.rush\.edu)?\/users\/molebio\/Bob_Eisenberg\/Reprints\/(.*)', 
+        r'((?:https?:\/\/|ftp:\/\/)?(?:ftp\.rush\.edu)?\/users\/molebio\/Bob_Eisenberg\/Reprints\/)([^\s)\]]+)', 
         re.IGNORECASE
     )
     
@@ -16,15 +17,14 @@ def update_cv_links(docx_path, output_path):
     hyperlink_updates = 0
     text_updates = 0
 
-# --- Step 1: Update Underlying Hyperlink Destinations (.rels) ---
+    # --- Step 1: Update Underlying Hyperlink Destinations (.rels) ---
     rels = doc.part.rels
     for rel_id, rel in rels.items():
         if "hyperlink" in rel.reltype:
-            # Read the target link using the public attribute
             match = reprint_pattern.search(rel.target_ref)
             if match:
-                file_fragment = match.group(1)
-                # Write to the protected internal target attribute to bypass the read-only restriction
+                # group(2) is now our safe filename fragment
+                file_fragment = match.group(2)
                 rel._target = f"{new_base_url}{file_fragment}"
                 hyperlink_updates += 1
 
@@ -32,11 +32,12 @@ def update_cv_links(docx_path, output_path):
     for paragraph in doc.paragraphs:
         for child in paragraph._element.iter():
             if child.tag.endswith('t') and child.text:
-                match = reprint_pattern.search(child.text)
-                if match:
-                    file_fragment = match.group(1)
-                    child.text = f"{new_base_url}{file_fragment}"
-                    text_updates += 1
+                # We use re.sub here to cleanly replace ONLY the matched URL string
+                # leaving everything else in the text run (like ' [PDF]') completely untouched
+                new_text, count = reprint_pattern.subn(rf"{new_base_url}\2", child.text)
+                if count > 0:
+                    child.text = new_text
+                    text_updates += count
 
     # --- Step 3: Check inside Tables ---
     for table in doc.tables:
@@ -45,18 +46,15 @@ def update_cv_links(docx_path, output_path):
                 for paragraph in cell.paragraphs:
                     for child in paragraph._element.iter():
                         if child.tag.endswith('t') and child.text:
-                            match = reprint_pattern.search(child.text)
-                            if match:
-                                file_fragment = match.group(1)
-                                child.text = f"{new_base_url}{file_fragment}"
-                                text_updates += 1
+                            new_text, count = reprint_pattern.subn(rf"{new_base_url}\2", child.text)
+                            if count > 0:
+                                child.text = new_text
+                                text_updates += count
 
-    # Save changes to the newly targeted document path
     doc.save(output_path)
     print("--- Link Refactoring Metrics ---")
     print(f"✔ Modified Hyperlinks (Targets): {hyperlink_updates}")
     print(f"✔ Modified Plain Text References: {text_updates}")
     print(f"✔ Successfully compiled document: '{output_path}'")
 
-# Execute conversion using your exact filename parameters
 update_cv_links("../newest-CV/Bob_Eisenberg_CV_2026-02-19-2.docx", "../newest-CV/Bob_Eisenberg_CV_2026-02-19.docx")
